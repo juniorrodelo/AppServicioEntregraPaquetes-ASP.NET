@@ -65,7 +65,10 @@ namespace AppServicioEntregaPaquetes.Modelo
               
         public override double calculateCost()
         {
+
             double cost = (this.Weight) * (this.CostXGrams);
+
+            // Sumando Cuota fija para el envio de 2 días
             this.ShippingCost = (this.FixedFee) + (cost);
 
             return this.ShippingCost;

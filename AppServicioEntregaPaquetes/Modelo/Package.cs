@@ -5,7 +5,7 @@ using System.Web;
 
 namespace AppServicioEntregaPaquetes.Modelo
 {
-    public abstract class Package
+    public class Package
     {
         #region "Atributes"
         private string code;
