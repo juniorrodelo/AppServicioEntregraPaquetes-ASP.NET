@@ -116,7 +116,7 @@ namespace AppServicioEntregaPaquetes.Modelo
             this.postalCodeSender = "000000";
             this.postalCodeAddressee = "000000";
             this.weight = 0.0;
-            this.CostXGrams = 1000.00;
+            this.costXGrams = 1000.00;
         }
 
         /// <summary>
