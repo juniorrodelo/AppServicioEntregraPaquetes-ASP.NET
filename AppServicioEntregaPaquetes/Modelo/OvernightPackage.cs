@@ -65,7 +65,14 @@ namespace AppServicioEntregaPaquetes.Modelo
         #region "Abstracts Methods"
               
         public override double calculateCost()
-        {   
+        {
+            // Asegurando que es positivo el peso y el valor por gramos
+            if (this.CostXGrams < 0 && this.Weight < 0)
+            {
+                this.CostXGrams = this.CostXGrams * -1;
+                this.Weight = this.Weight * -1;
+            }
+
             // Agregando Costo Adicional por Gramos
             this.CostXGrams += this.additionalChargeXGrams;
  
