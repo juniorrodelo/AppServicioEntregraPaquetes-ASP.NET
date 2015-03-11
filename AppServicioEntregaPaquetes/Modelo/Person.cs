@@ -194,10 +194,9 @@ namespace AppServicioEntregaPaquetes.Modelo
 
         public IEnumerable<Person> getPersonas()
         {
-            Person sender = new Person("Alfredo Rodelo", "97052317727", "Edificio Los ejecutivos",
-            "Cartagena", "Bolívar", "130014", "6612366", "3124600156");
+            Person person = new Person();
 
-            data.Add(sender);
+            data.Add(person);
 
             return data;
         }
