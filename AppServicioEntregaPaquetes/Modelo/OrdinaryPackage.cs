@@ -5,19 +5,13 @@ using System.Web;
 
 namespace AppServicioEntregaPaquetes.Modelo
 {
-    public class OvernightPackage : Package
+    class OrdinaryPackage : Package
     {
         #region "Atributes"
-        private static double additionalChargeXGrams = 200.00; // Cargo adicional por gramos
         private double shippingCost; // Costo de Envio
         #endregion
 
         #region "Properties"
-        public double AdditionalChargeXGrams
-        {
-            get { return additionalChargeXGrams; }
-            set { additionalChargeXGrams = value; }
-        }
 
         public double ShippingCost
         {
@@ -27,11 +21,7 @@ namespace AppServicioEntregaPaquetes.Modelo
         #endregion
 
         #region "Builders"
-        public OvernightPackage()
-            : base()
-        {
-            
-        }
+
         #endregion
 
         #region "Abstracts Methods"
@@ -45,8 +35,7 @@ namespace AppServicioEntregaPaquetes.Modelo
                 this.Weight = this.Weight * -1;
             }
 
-            // Agregando Costo Adicional por Gramos
-            this.CostXGrams += additionalChargeXGrams;
+            // Calculando el costo total
 
             double cost = (this.Weight) * (this.CostXGrams);
             this.ShippingCost = cost;
@@ -61,7 +50,6 @@ namespace AppServicioEntregaPaquetes.Modelo
         public override string ToString()
         {
             return base.ToString() +
-                   "Additional Charge But Grams: " + additionalChargeXGrams + "\n" +
                    "Total Cost: " + this.calculateCost() + "\n";
         }
 
@@ -70,7 +58,7 @@ namespace AppServicioEntregaPaquetes.Modelo
             OvernightPackage p = (OvernightPackage)obj;
             bool result = false;
 
-            if (base.Equals(0) && (additionalChargeXGrams == p.AdditionalChargeXGrams))
+            if (base.Equals(0))
                 result = true;
 
             return result;
@@ -84,7 +72,5 @@ namespace AppServicioEntregaPaquetes.Modelo
 
 
         #endregion
-
-
     }
 }

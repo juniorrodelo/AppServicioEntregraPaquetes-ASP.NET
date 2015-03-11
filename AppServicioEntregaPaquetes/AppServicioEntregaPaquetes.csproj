@@ -60,8 +60,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Modelo\OrdinaryPackage.cs" />
     <Compile Include="Modelo\OvernightPackage.cs" />
     <Compile Include="Modelo\Package.cs" />
+    <Compile Include="Modelo\Person.cs" />
     <Compile Include="Modelo\TwoDayPackage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

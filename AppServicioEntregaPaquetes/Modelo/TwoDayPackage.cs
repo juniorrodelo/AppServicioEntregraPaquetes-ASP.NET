@@ -5,10 +5,10 @@ using System.Web;
 
 namespace AppServicioEntregaPaquetes.Modelo
 {
-    public class TwoDayPackage : Package
+    class TwoDayPackage : Package
     {
         #region "Atributes"
-        private double fixedFee; // Cuota Fija
+        private static double fixedFee = 5200.00; // Cuota Fija
         private double shippingCost; // Costo de Envio
         #endregion
 
@@ -27,10 +27,31 @@ namespace AppServicioEntregaPaquetes.Modelo
         #endregion
 
         #region "Builders"
-        public TwoDayPackage(): base()
+        public TwoDayPackage()
+            : base()
         {
-            this.fixedFee = 5200.00;
+           
         }
+        #endregion
+
+        #region "Abstracts Methods"
+
+        public override double calculateCost()
+        {
+            // Asegurando que es positivo el peso y el valor por gramos
+            if (this.CostXGrams < 0 && this.Weight < 0)
+            {
+                this.CostXGrams = this.CostXGrams * -1;
+                this.Weight = this.Weight * -1;
+            }
+
+            double cost = (this.Weight) * (this.CostXGrams);
+
+            // Sumando Cuota fija para el envio de 2 días
+            this.ShippingCost = (this.FixedFee) + (cost);
+            return this.ShippingCost;
+        }
+
         #endregion
 
         #region "Override methods of Object"
@@ -38,7 +59,8 @@ namespace AppServicioEntregaPaquetes.Modelo
         public override string ToString()
         {
             return base.ToString() +
-                   "Fixed Fee: " + this.fixedFee + "\n";
+                   "Fixed Fee: " + fixedFee + "\n" +
+                   "Total Cost: " + this.calculateCost() + "\n";
         }
 
         public override bool Equals(object obj)
@@ -46,7 +68,7 @@ namespace AppServicioEntregaPaquetes.Modelo
             TwoDayPackage p = (TwoDayPackage)obj;
             bool result = false;
 
-            if (base.Equals(0) && (this.fixedFee == p.fixedFee))
+            if (base.Equals(0) && (fixedFee == p.FixedFee))
                 result = true;
 
             return result;
@@ -60,28 +82,6 @@ namespace AppServicioEntregaPaquetes.Modelo
 
 
         #endregion
-
-        #region "Abstracts Methods"
-              
-        public override double calculateCost()
-        {
-            // Asegurando que es positivo el peso y el valor por gramos
-            if (this.CostXGrams < 0 && this.Weight < 0)
-            {
-                this.CostXGrams = this.CostXGrams* -1;
-                this.Weight = this.Weight * -1;
-            }
-
-            double cost = (this.Weight) * (this.CostXGrams);
-
-            // Sumando Cuota fija para el envio de 2 días
-            this.ShippingCost = (this.FixedFee) + (cost);
-
-            return this.ShippingCost;
-        }
-
-        #endregion
-        
 
 
     }

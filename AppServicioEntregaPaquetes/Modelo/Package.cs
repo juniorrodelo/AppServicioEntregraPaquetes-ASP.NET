@@ -5,16 +5,16 @@ using System.Web;
 
 namespace AppServicioEntregaPaquetes.Modelo
 {
-    public class Package
+    public abstract class Package
     {
         #region "Atributes"
         private string code;
-        private string name;
-        private string addres;
-        private string city;
-        private string state;
-        private string postalCodeSender;
-        private string postalCodeAddressee;
+        // Remitente
+        Person sender = new Person("Alfredo Rodelo", "97052317727", "Edificio Los ejecutivos",
+            "Cartagena", "Bolívar", "130014", "6612366", "3124600156");
+        // Destinatario
+        Person addresse = new Person("Edwin Puertas", "103940943", "san Fernando Calle 45 #12-03",
+            "Barranquilla", "Atlantico", "130011", "6634456", "3203434342");
         private double weight;
         private double costXGrams;
         #endregion
@@ -27,60 +27,6 @@ namespace AppServicioEntregaPaquetes.Modelo
         {
             get { return code; }
             set { code = value; }
-        }
-
-        /// <summary>
-        /// Devuelve o asiga el nombre del destinatario
-        /// </summary>
-        public string Name
-        {
-            get { return name; }
-            set { name = value; }
-        }
-
-        /// <summary>
-        /// Devuelve o asiga la dirección del destinatario
-        /// </summary>
-        public string Addres
-        {
-            get { return addres; }
-            set { addres = value; }
-        }
-
-        /// <summary>
-        /// Devuelve o asiga la ciudad de residencia del destinatario
-        /// </summary>
-        public string City
-        {
-            get { return city; }
-            set { city = value; }
-        }
-
-        /// <summary>
-        /// Devuelve o asiga el estado o departamento del destanatario
-        /// </summary>
-        public string State
-        {
-            get { return state; }
-            set { state = value; }
-        }
-
-        /// <summary>
-        /// Devuelve o asiga el codigo postal del remitente
-        /// </summary>
-        public string PostalCodeSender
-        {
-            get { return postalCodeSender; }
-            set { postalCodeSender = value; }
-        }
-
-        /// <summary>
-        /// Devuelve o asiga el codigo postal del destanatario 
-        /// </summary>
-        public string PostalCodeAddressee
-        {
-            get { return postalCodeAddressee; }
-            set { postalCodeAddressee = value; }
         }
 
         /// <summary>
@@ -108,46 +54,25 @@ namespace AppServicioEntregaPaquetes.Modelo
         /// </summary>
         public Package()
         {
+            sender.getPersonas();
+            addresse.getPersonas();
             this.code = "0";
-            this.name = "Package";
-            this.addres = "Addres";
-            this.city = "City";
-            this.state = "State";
-            this.postalCodeSender = "000000";
-            this.postalCodeAddressee = "000000";
-            this.weight = 0.0;
+            this.weight = 5.0;
             this.costXGrams = 1000.00;
         }
 
-        /// <summary>
-        /// Constructor que inicializa la Clase Package 
-        /// </summary>
-        /// <param name="code"></param>
-        /// <param name="name"></param>
-        /// <param name="addres"></param>
-        /// <param name="city"></param>
-        /// <param name="state"></param>
-        /// <param name="postalCodeSender"></param>
-        /// <param name="postalCodeAddressee"></param>
-        /// <param name="weight"></param>
-        /// <param name="CostXGrams"></param>
-        public Package(string code, string name, string addres, string city, string state,
-            string postalCodeSender, string postalCodeAddressee, double weight, double CostXGrams)
+        public Package(string code, double weight, double CostXGrams)
         {
+            sender.getPersonas();
+            addresse.getPersonas();
             this.code = code;
-            this.name = name;
-            this.addres = addres;
-            this.city = city;
-            this.state = state;
-            this.postalCodeSender = postalCodeSender;
-            this.postalCodeAddressee = postalCodeAddressee;
             this.weight = weight;
             this.CostXGrams = CostXGrams;
         }
 
         #endregion
 
-        #region "Override methods of Object" 
+        #region "Override methods of Object"
 
         /// <summary>
         /// Retorna la descripición del Paquete
@@ -155,16 +80,14 @@ namespace AppServicioEntregaPaquetes.Modelo
         /// <returns>Retorna la descripición del Paquete</returns>
         public override string ToString()
         {
-            return  "Code: " + this.code + "\n" +
-                    "Name: " + this.name + "\n" +
-                    "Addres: " + this.addres + "\n" +
-                    "city: " + this.city + "\n" +
-                    "state: " + this.state + "\n" +
-                    "Postal Code Sender: " + this.postalCodeSender + "\n" +
-                    "Postal Code Addressee: " + this.postalCodeAddressee + "\n" +
-                    "Weight: " + this.weight + "\n" +
+            return "=================== Sender Information ============= \n" +
+                    this.sender.ToString() + "\n" +
+                    "=================== Adderesse Information ============= \n" +
+                    this.addresse.ToString() + "\n" +
+                    "=================== Package Information ============= \n" +
+                    "Code: " + this.code + "\n" +
+                    "Weight: " + this.weight + " Gramos \n" +
                     "Cost per gram: " + this.CostXGrams + "\n";
-
         }
 
 
@@ -177,9 +100,7 @@ namespace AppServicioEntregaPaquetes.Modelo
             Package p = (Package)obj;
             bool result = false;
 
-            if ((this.code == p.code) && (this.name == p.name) && (this.addres == p.addres) && (this.city == p.city)
-                && (this.state == p.state) && (this.postalCodeSender == p.postalCodeSender) && (this.postalCodeAddressee == p.postalCodeAddressee)
-                && (this.weight == p.weight) && (this.CostXGrams == p.CostXGrams))
+            if ((this.sender.Equals(0)) && (this.addresse.Equals(0)) && (this.code == p.code) && (this.weight == p.weight) && (this.CostXGrams == p.CostXGrams))
                 result = true;
 
             return result;
@@ -198,7 +119,7 @@ namespace AppServicioEntregaPaquetes.Modelo
         #endregion
 
         #region "Abstracts Methods"
-              
+
         public abstract double calculateCost();
 
         #endregion
