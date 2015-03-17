@@ -8,7 +8,7 @@ namespace AppServicioEntregaPaquetes.Modelo
     class TwoDayPackage : Package
     {
         #region "Atributes"
-        private static double fixedFee = 5200.00; // Cuota Fija
+        private double fixedFee; // Cuota Fija
         private double shippingCost; // Costo de Envio
         #endregion
 
@@ -30,7 +30,13 @@ namespace AppServicioEntregaPaquetes.Modelo
         public TwoDayPackage()
             : base()
         {
-           
+            this.fixedFee = 5200.00;
+        }
+
+        public TwoDayPackage(string code, Person sender, Person addresse, double weight, double costXGrams, double fixedFee)
+            : base(code, sender, addresse, weight, costXGrams)
+        {
+            this.fixedFee = fixedFee;
         }
         #endregion
 

@@ -8,6 +8,7 @@ namespace AppServicioEntregaPaquetes.Modelo
     class OrdinaryPackage : Package
     {
         #region "Atributes"
+        int days;
         private double shippingCost; // Costo de Envio
         #endregion
 
@@ -21,7 +22,17 @@ namespace AppServicioEntregaPaquetes.Modelo
         #endregion
 
         #region "Builders"
+        public OrdinaryPackage()
+            : base()
+        {
+            this.days = 3;
+        }
 
+        public OrdinaryPackage(string code, Person sender, Person recipients, double weight, double cost, int days)
+            : base(code, sender, recipients, weight, cost)
+        {
+            this.days = days;
+        }
         #endregion
 
         #region "Abstracts Methods"

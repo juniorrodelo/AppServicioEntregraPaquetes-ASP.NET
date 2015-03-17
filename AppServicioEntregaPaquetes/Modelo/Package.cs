@@ -9,12 +9,8 @@ namespace AppServicioEntregaPaquetes.Modelo
     {
         #region "Atributes"
         private string code;
-        // Remitente
-        Person sender = new Person("Alfredo Rodelo", "97052317727", "Edificio Los ejecutivos",
-            "Cartagena", "Bolívar", "130014", "6612366", "3124600156");
-        // Destinatario
-        Person addresse = new Person("Edwin Puertas", "103940943", "san Fernando Calle 45 #12-03",
-            "Barranquilla", "Atlantico", "130011", "6634456", "3203434342");
+        private Person sender;
+        private Person addresse;
         private double weight;
         private double costXGrams;
         #endregion
@@ -46,6 +42,20 @@ namespace AppServicioEntregaPaquetes.Modelo
             get { return costXGrams; }
             set { costXGrams = value; }
         }
+
+        internal Person Addresse
+        {
+            get { return addresse; }
+            set { addresse = value; }
+        }
+
+
+        internal Person Addresse
+        {
+            get { return addresse; }
+            set { addresse = value; }
+        }
+
         #endregion
 
         #region "Builders"
@@ -54,21 +64,22 @@ namespace AppServicioEntregaPaquetes.Modelo
         /// </summary>
         public Package()
         {
-            sender.getPersonas();
-            addresse.getPersonas();
             this.code = "0";
+            this.sender = new Person();
+            this.addresse = new Person();
             this.weight = 5.0;
             this.costXGrams = 1000.00;
         }
 
-        public Package(string code, double weight, double CostXGrams)
+        public Package(string code, Person sender, Person addresse, double weight, double costXGrams)
         {
-            sender.getPersonas();
-            addresse.getPersonas();
             this.code = code;
+            this.sender = sender;
+            this.addresse = addresse;
             this.weight = weight;
-            this.CostXGrams = CostXGrams;
+            this.costXGrams = costXGrams;
         }
+
 
         #endregion
 

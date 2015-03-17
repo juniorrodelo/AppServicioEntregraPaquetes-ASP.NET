@@ -8,7 +8,7 @@ namespace AppServicioEntregaPaquetes.Modelo
     public class OvernightPackage : Package
     {
         #region "Atributes"
-        private static double additionalChargeXGrams = 200.00; // Cargo adicional por gramos
+        private double additionalChargeXGrams; // Cargo adicional por gramos
         private double shippingCost; // Costo de Envio
         #endregion
 
@@ -30,7 +30,13 @@ namespace AppServicioEntregaPaquetes.Modelo
         public OvernightPackage()
             : base()
         {
-            
+            this.additionalChargeXGrams = 200.00;
+        }
+
+        public OvernightPackage(string code, Person sender, Person addresse, double weight, double costXGrams, double additionalChargeXGrams)
+            : base(code, sender, addresse, weight, costXGrams)
+        {
+            this.additionalChargeXGrams = additionalChargeXGrams;
         }
         #endregion
 
