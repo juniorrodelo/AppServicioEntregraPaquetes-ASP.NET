@@ -5,7 +5,7 @@ using System.Web;
 
 namespace AppServicioEntregaPaquetes.Modelo
 {
-    class Person
+    public class Person
     {
         #region "Atributes"
         private string name;
@@ -16,13 +16,7 @@ namespace AppServicioEntregaPaquetes.Modelo
         private string postalCode;
         private string phone; // Telefono fijo
         private string mobilePhone; // Telefono Móvil 
-        private List<Person> data = new List<Person>();
 
-        public List<Person> Data
-        {
-            get { return data; }
-            set { data = value; }
-        }
         #endregion
 
         #region "Properties"

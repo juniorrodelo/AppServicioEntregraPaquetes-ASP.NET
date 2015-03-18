@@ -8,11 +8,18 @@ namespace AppServicioEntregaPaquetes.Modelo
     class OrdinaryPackage : Package
     {
         #region "Atributes"
-        int days;
+        private byte days =3;
+
+
         private double shippingCost; // Costo de Envio
         #endregion
 
         #region "Properties"
+
+        public byte Days
+        {
+            get { return days; }
+        }
 
         public double ShippingCost
         {
@@ -26,12 +33,15 @@ namespace AppServicioEntregaPaquetes.Modelo
             : base()
         {
             this.days = 3;
+            this.shippingCost = 0.0;
         }
 
-        public OrdinaryPackage(string code, Person sender, Person addresse, double weight, double costXGrams, int days)
+        public OrdinaryPackage(string code, Person sender, Person addresse, double weight, double costXGrams, byte days , double shippingCost)
             : base(code, sender, addresse, weight, costXGrams)
         {
             this.days = days;
+            this.shippingCost = shippingCost;
+
         }
         #endregion
 
@@ -39,6 +49,7 @@ namespace AppServicioEntregaPaquetes.Modelo
 
         public override double calculateCost()
         {
+            
             // Asegurando que es positivo el peso y el valor por gramos
             if (this.CostXGrams < 0 && this.Weight < 0)
             {

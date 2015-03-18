@@ -50,11 +50,7 @@ namespace AppServicioEntregaPaquetes.Modelo
         }
 
 
-        internal Person Addresse
-        {
-            get { return addresse; }
-            set { addresse = value; }
-        }
+
 
         #endregion
 

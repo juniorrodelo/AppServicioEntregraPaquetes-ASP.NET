@@ -9,7 +9,7 @@ namespace AppServicioEntregaPaquetes.Modelo
     {
         #region "Atributes"
         private double additionalChargeXGrams; // Cargo adicional por gramos
-        private double shippingCost; // Costo de Envio
+       // private double shippingCost; // Costo de Envio
         #endregion
 
         #region "Properties"
@@ -19,11 +19,6 @@ namespace AppServicioEntregaPaquetes.Modelo
             set { additionalChargeXGrams = value; }
         }
 
-        public double ShippingCost
-        {
-            get { return shippingCost; }
-            set { shippingCost = value; }
-        }
         #endregion
 
         #region "Builders"
@@ -33,7 +28,7 @@ namespace AppServicioEntregaPaquetes.Modelo
             this.additionalChargeXGrams = 200.00;
         }
 
-        public OvernightPackage(string code, Person sender, Person addresse, double weight, double costXGrams)
+        public OvernightPackage(string code, Person sender, Person addresse, double weight, double costXGrams, double additionalChargeXGrams)
             : base(code, sender, addresse, weight, costXGrams)
         {
             this.additionalChargeXGrams = additionalChargeXGrams;
@@ -55,9 +50,9 @@ namespace AppServicioEntregaPaquetes.Modelo
             this.CostXGrams += additionalChargeXGrams;
 
             double cost = (this.Weight) * (this.CostXGrams);
-            this.ShippingCost = cost;
 
-            return this.ShippingCost;
+
+            return cost;
         }
 
         #endregion
