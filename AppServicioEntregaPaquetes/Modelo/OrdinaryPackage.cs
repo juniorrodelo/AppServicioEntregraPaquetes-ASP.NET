@@ -28,8 +28,8 @@ namespace AppServicioEntregaPaquetes.Modelo
             this.days = 3;
         }
 
-        public OrdinaryPackage(string code, Person sender, Person recipients, double weight, double cost, int days)
-            : base(code, sender, recipients, weight, cost)
+        public OrdinaryPackage(string code, Person sender, Person addresse, double weight, double costXGrams, int days)
+            : base(code, sender, addresse, weight, costXGrams)
         {
             this.days = days;
         }

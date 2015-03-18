@@ -33,7 +33,7 @@ namespace AppServicioEntregaPaquetes.Modelo
             this.additionalChargeXGrams = 200.00;
         }
 
-        public OvernightPackage(string code, Person sender, Person addresse, double weight, double costXGrams, double additionalChargeXGrams)
+        public OvernightPackage(string code, Person sender, Person addresse, double weight, double costXGrams)
             : base(code, sender, addresse, weight, costXGrams)
         {
             this.additionalChargeXGrams = additionalChargeXGrams;

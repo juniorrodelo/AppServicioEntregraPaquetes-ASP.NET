@@ -33,7 +33,7 @@ namespace AppServicioEntregaPaquetes.Modelo
             this.fixedFee = 5200.00;
         }
 
-        public TwoDayPackage(string code, Person sender, Person addresse, double weight, double costXGrams, double fixedFee)
+        public TwoDayPackage(string code, Person sender, Person addresse, double weight, double costXGrams)
             : base(code, sender, addresse, weight, costXGrams)
         {
             this.fixedFee = fixedFee;

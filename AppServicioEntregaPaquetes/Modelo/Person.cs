@@ -106,7 +106,7 @@ namespace AppServicioEntregaPaquetes.Modelo
         /// </summary>
         public Person()
         {
-            this.name = "Package";
+            this.name = "Name";
             this.numberIdentification = "00000000";
             this.addres = "Addres";
             this.city = "City";
@@ -191,15 +191,6 @@ namespace AppServicioEntregaPaquetes.Modelo
         #endregion
 
         #region "Abstracts Methods"
-
-        public IEnumerable<Person> getPersonas()
-        {
-            Person person = new Person();
-
-            data.Add(person);
-
-            return data;
-        }
 
         #endregion
     }

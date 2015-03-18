@@ -67,7 +67,7 @@ namespace AppServicioEntregaPaquetes.Modelo
             this.code = "0";
             this.sender = new Person();
             this.addresse = new Person();
-            this.weight = 5.0;
+            this.weight = 0.0;
             this.costXGrams = 1000.00;
         }
 
